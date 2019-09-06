@@ -1,15 +1,22 @@
 <template>
   <div>
     <div
-      v-for="comment in commentsList"
+      v-for="(comment, index) in commentsList"
       :key="comment.id"
       class="card"
-      :class="{'odd' : comment.id%2}"
+      :class="{'odd' : (index+1)%2}"
+      @click="openComment(comment.id)"
     >
-      <div class="cardName" :class="{'oddName' : comment.id%2}">
+      <div
+        class="cardName"
+        :class="{'oddName' : (index+1)%2}"
+      >
         {{ comment.name }}
       </div>
-      <div class="cardMail" :class="{'oddMail' : comment.id%2}">
+      <div
+        class="cardMail"
+        :class="{'oddMail' : (index+1)%2}"
+      >
         {{ comment.mail }}
       </div>
       <div class="cardContent">
@@ -27,6 +34,11 @@ export default {
             type: Array,
             required: true
         }
+    },
+    methods: {
+        openComment (id) {
+            this.$router.push('/comment/'+id);
+        }
     }
 };
 </script>
@@ -42,7 +54,7 @@ export default {
   align-items: center;
   background-color: #deebde;
   color: #6c737b;
-  margin: 10px 0;
+  margin: 10px 0px;
 }
   .odd{
     background-color: #e8edf2;
@@ -78,4 +90,16 @@ export default {
     padding: 0 10px;
     overflow: auto;
   }
+@media all and (max-device-width: 768px){
+    .card{
+        width: 45%;
+    }
+}
+@media all and (max-device-width: 425px){
+    .card{
+        width: 100%;
+        font-size: 35px;
+        height: 250px;
+    }
+}
 </style>

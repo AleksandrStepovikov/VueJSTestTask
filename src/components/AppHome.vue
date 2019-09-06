@@ -2,7 +2,7 @@
   <div>
     <div class="mainContainer">
       <CommentForm/>
-      <CommentList/>
+      <router-view></router-view>
     </div>
     <Footer />
   </div>
@@ -11,13 +11,11 @@
 <script>
 import Footer  from './footer/Footer';
 import CommentForm from './commentForm/CommentForm';
-import CommentList from './commentList/CommentList';
 export default {
     name: 'AppHome',
     components: {
         Footer: Footer,
         CommentForm: CommentForm,
-        CommentList: CommentList
     }
 };
 </script>

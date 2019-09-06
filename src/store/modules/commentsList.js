@@ -2,7 +2,8 @@ import addComments from '../../api/addComments';
 
 // initial state
 const state = {
-    comments: []
+    comments: [],
+    commentById: null
 };
 
 // getters
@@ -19,8 +20,15 @@ const actions = {
     addNewComment ({ state, commit }, comment){
         comment.id = state.comments.length+1;
         const newState = state.comments.slice();
-        newState.push(comment);
+        newState.unshift(comment);
         commit('setComments', newState);
+    },
+
+    getCommentById ({ state, commit }, id) {
+        console.log(id)
+        const comment = state.comments.filter((comment) => comment.id == id)[0];
+        console.log(comment)
+        commit('setCommentById', comment);
     }
 
 };
@@ -28,9 +36,12 @@ const actions = {
 // mutations
 const mutations = {
     setComments (state, comments) {
-        console.log(comments)
         state.comments = comments;
     },
+
+    setCommentById (state, comment) {
+        state.commentById = comment;
+    }
 
 };
 

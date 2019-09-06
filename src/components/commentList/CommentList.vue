@@ -18,8 +18,9 @@ export default {
         comments: state => state.commentsList.comments
     }),
     created () {
-        this.getComments();
-
+        if (!this.comments.length){
+            this.getComments();
+        }
     },
     methods: {
         ...mapActions({
@@ -41,9 +42,19 @@ export default {
 .commentsList {
   width: 50%;
   margin: 0% 10%;
-  height: 85%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
+}
+
+@media all and (max-device-width: 1024px){
+  .commentsList{
+    width: auto;
+  }
+}
+@media all and (max-device-width: 425px){
+  .commentsList{
+    margin: 0% 5%;
+  }
 }
 </style>

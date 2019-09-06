@@ -1,17 +1,23 @@
 import AppHome from '@/components/AppHome';
-const AppMedium = () => import('@/components/AppMedium');
-
-
+import Comment from '@/components/Comment/Comment';
+import CommentList from '@/components/commentList/CommentList';
 const routes = [
     {
         path: '/',
         name: 'Home',
-        component: AppHome
-    },
-    {
-        path: '/medium',
-        name: 'Medium',
-        component: AppMedium
+        component: AppHome,
+        children: [
+            {
+                path: '',
+                name: 'CommentList',
+                component: CommentList
+            },
+            {
+                path: '/comment/:id',
+                name: 'Comment',
+                component: Comment
+            }
+        ]
     }
 ];
 

@@ -80,7 +80,7 @@ export default {
             submitAddComment: 'commentsList/addNewComment'
         }),
         addCommnet (){
-            if (this.name.length < 3 || this.name.length > 16 || !/^[a-zA-Z]+$/.test(this.name)){
+            if (this.name.length < 3 || this.name.length > 16 || !/^[a-zA-ZА-Яа-я]+$/.test(this.name)){
                 this.errors.push('Имя должно быть от 3 до 16 символов и содержать только буквы');
             }
             if (!/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(this.mail)){
@@ -177,4 +177,51 @@ export default {
   .button:active {
     background-color: #5a1616;
   }
+
+    @media all and (max-device-width: 1024px){
+        .commentForm{
+            width: 80%;
+        }
+    }
+    @media all and (max-device-width: 768px){
+        .commentForm{
+            width: 100%;
+            align-items: center;
+            margin: 0;
+            height: 100%;
+        }
+        .form{
+            flex-direction: column;
+            width: 80%;
+        }
+        .inputBlock {
+            width: 100%;
+        }
+    }
+    @media all and (max-device-width: 425px){
+        .form{
+            width: 90%;
+        }
+        .input {
+            height: 50px;
+            font-size: 30px;
+            letter-spacing: 1px;
+        }
+        .input.textarea {
+            height: 250px;
+        }
+        .inputLabel{
+            font-size: 30px;
+        }
+        .formButton {
+            justify-content: center;
+            width: 90%;
+        }
+        .button{
+            width: 100%;
+            height: 50px;
+            border-radius: 1%;
+            font-size: 35px;
+        }
+    }
 </style>

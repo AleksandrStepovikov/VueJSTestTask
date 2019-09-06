@@ -9,12 +9,7 @@ export default {
         setTimeout(() => cb(_comments), 100);
     },
 
-    addComment (comment, cb, errorCb) {
-        setTimeout(() => {
-            // simulate random checkout failure.
-            (Math.random() > 0.5 || navigator.userAgent.indexOf('PhantomJS') > -1)
-                ? cb()
-                : errorCb();
-        }, 100);
+    addComment (comment, cb) {
+        setTimeout(() =>  cb(), 100);
     }
 };
